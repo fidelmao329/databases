@@ -5,9 +5,28 @@ var mysql = require('mysql');
 // and to the database "chat".
 
 
-var dbConnection = mysql.createConnection({
-  user: 'root',
-  password: '',
-  database: 'chat'
-});
-dbConnection.connect();
+exports.makeConnection = function(queryType, tableName, data, callback) {
+  // console.log('All the data', queryType, tableName, data);
+  dbConnection = mysql.createConnection({
+    user: 'root',
+    password: '',
+    database: 'chat'
+  });
+  var queryString = {
+    POST: 'INSERT INTO ' + tableName + ' SET ?',
+    GET: 'SELECT * FROM ' + tableName, // may need to update * to handle requests
+  };
+  dbConnection.connect();
+  dbConnection.query(queryString[queryType], data, function(err, response, body) {
+    if (err) {
+      throw err;
+    } else {
+      console.log('Success!', response.insertId);
+      if (queryType === 'GET') {
+        console.log('response', response);
+        console.log('body', body);
+      }
+      callback();
+    }
+  });
+};
