@@ -6,7 +6,6 @@ var mysql = require('mysql');
 
 
 exports.makeConnection = function(queryType, tableName, data, callback) {
-  // console.log('All the data', queryType, tableName, data);
   dbConnection = mysql.createConnection({
     user: 'root',
     password: '',
@@ -22,11 +21,8 @@ exports.makeConnection = function(queryType, tableName, data, callback) {
       throw err;
     } else {
       console.log('Success!', response.insertId);
-      if (queryType === 'GET') {
-        console.log('response', response);
-        console.log('body', body);
-      }
-      callback();
+      var data = JSON.stringify(response);
+      callback(data);
     }
   });
 };
