@@ -30,3 +30,7 @@ if (!module.parent) {
   console.log('Listening on', app.get('port'));
 }
 
+app.route('/events').get(function(req, res) {
+  console.log('we\'re getting this!');
+  res.send('GET it');
+});
