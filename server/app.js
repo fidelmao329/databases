@@ -17,6 +17,7 @@ app.set('port', 3000);
 // Logging and parsing
 app.use(morgan('dev'));
 app.use(parser.json());
+// console.log(app);
 
 // Set up our routes
 app.use('/classes', router);
@@ -29,8 +30,3 @@ if (!module.parent) {
   app.listen(app.get('port'));
   console.log('Listening on', app.get('port'));
 }
-
-app.route('/events').get(function(req, res) {
-  console.log('we\'re getting this!');
-  res.send('GET it');
-});

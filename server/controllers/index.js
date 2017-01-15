@@ -9,10 +9,12 @@ module.exports = {
       });
     }, // a function which handles a get request for all messages
     post: function (req, res) {
-      res.writeHead(201);
-      models.messages.post(req.body, function() {
-        res.end('');
-      });
+      console.log('req body', req.body);
+      // models.messages.post(req.body, function() {
+      //   res.writeHead(201);
+      //   res.end('');
+      // });
+      res.end('');
     } // a function which handles posting a message to the database
   },
 

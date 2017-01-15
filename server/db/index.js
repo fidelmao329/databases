@@ -20,7 +20,7 @@ exports.makeConnection = function(queryType, tableName, data, callback) {
     if (err) {
       throw err;
     } else {
-      console.log('Success!', response.insertId);
+      console.log('Success!', queryType, response.insertId);
       var data = JSON.stringify(response);
       callback(data);
     }

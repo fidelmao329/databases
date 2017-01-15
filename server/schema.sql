@@ -21,3 +21,6 @@ CREATE TABLE rooms (
 
 -- ALTER TABLE messages ADD FOREIGN KEY (user_id) references users (id);
 -- ALTER TABLE messages ADD FOREIGN KEY (room_id) references rooms (id);
+
+INSERT INTO messages (username, message, roomname) VALUES ('savy', 'Hello Word!', 'lobby');
+INSERT INTO users (username) VALUES ('savy');
